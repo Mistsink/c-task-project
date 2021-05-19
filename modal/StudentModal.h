@@ -9,7 +9,6 @@
 
 const int studentLen = 100;
 
-
 // type
 typedef struct ReturnedStudent {
     Student *student;
@@ -17,20 +16,25 @@ typedef struct ReturnedStudent {
 } ReturnedStudent;
 
 ReturnedStudent * newReturnedStudent() {
-    return (ReturnedStudent *) malloc(sizeof(ReturnedStudent));
+    ReturnedStudent * returnedStudent = (ReturnedStudent *) malloc(sizeof(ReturnedStudent));
+    returnedStudent->student = NULL;
+    returnedStudent->ok = 0;
+    return returnedStudent;
 }
 
-void initStudent();
+typedef Student* Students;
 
-ReturnedStudent *addStudent(int id, char name[nameLen]);
+Students *initStudent();
+
+ReturnedStudent *addStudent(int id, char name[nameLen], int classNum);
 ReturnedStudent *removeStudent(int id);
-ReturnedStudent *updateStudent(int id);
+ReturnedStudent *updateStudent(int id, char newName[nameLen], int newClassNum);
 ReturnedStudent *seekStudent(int id);
-void *seeAllStudent();
-int cnt();
-int _cnt();
-int studentCount(Student *student[studentLen]);
+void seeAllStudent();
+int studentCount();
 
+int findStudent(int id);
+int findLowerBound(int id);
 
 
 #endif //PROJECT_STUDENTMODAL_H
