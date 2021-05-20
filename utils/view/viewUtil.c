@@ -5,6 +5,9 @@
 #include "viewUtil.h"
 #include <stdio.h>
 #include <stdlib.h>
+#ifndef PROJECT_VIEW_UTIL_C
+#define PROJECT_VIEW_UTIL_C
+
 
 void clearScreen() {
     system("clear");
@@ -39,3 +42,5 @@ void renderTransverseLine_() {
     for (int i = 0; i < len ; i ++)
         putchar('-');
 }
+
+#endif //PROJECT_VIEW_UTIL_C

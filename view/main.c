@@ -5,6 +5,8 @@
 #include "main.h"
 #include "../utils/view/viewUtil.c"
 #include <stdio.h>
+#ifndef PROJECT_MAIN_C
+#define PROJECT_MAIN_C
 
 void render(int viewCategory) {
     clearScreen();
@@ -71,33 +73,42 @@ void renderIndex(){
 
 char studentViewLabels[][LabelLen] = {
 //        "1. 添加学生信息",
-//        "2. 删除学生信息",
-//        "3. 查看学生信息",
-//        "4. 返回到主页",
-//        "5. 退出本系统",
-//        "6. 刷新"
+        //        "2. 删除学生信息",
+        //        "3. 查看学生信息",
+        //        "4. 查看全部学生信息",
+        //        "5. 返回到主页",
+        //        "6. 重新进入（清屏）"
+        //        "7. 退出本系统"
         "1. add student info",
         "2. remove student info",
         "3. check student info",
-        "4. back to index",
-        "5. exit system",
-        "6. refresh screen"
+        "4. see all students info",
+        "5. back to index",
+        "6. refresh screen",
+        "7. exit system"
 };
 
 
 void renderStudent() {
-    renderCategory_(studentViewLabels, 6);
+    renderCategory_(studentViewLabels, 7);
 }
 
 
 char CourseViewLabels[][LabelLen] = {
+        //      1. 添加课程
+        ////    2. 删除课程
+        ////    3. 查看课程
+        ////    4. 查看全部课程
+        //        "5. 返回到主页",
+        //        "6. 重新进入（清屏）"
+        //        "7. 退出本系统"
         "1. add course",
         "2. remove course",
-        "3. update course",
-        "4. check course info",
+        "3. check course info",
+        "4. check all course info",
         "5. back to index",
-        "6. exit system",
-        "7. refresh screen"
+        "6. refresh screen",
+        "7. exit system"
 };
 void renderCourse(){
     renderCategory_(CourseViewLabels, 7);
@@ -109,10 +120,13 @@ char ChooseViewLabels[][LabelLen] = {
         "3. update score for student",
         "4. check chose info",
         "5. back to index",
-        "6. exit system",
-        "7. refresh screen"
+        "6. refresh screen",
+        "7. exit system"
 
 };
 void renderChoose(){
     renderCategory_(ChooseViewLabels, 7);
 }
+
+
+#endif //PROJECT_MAIN_C

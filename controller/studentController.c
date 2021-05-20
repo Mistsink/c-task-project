@@ -4,15 +4,16 @@
 
 #include "studentController.h"
 #include "../view/main.c"
-#include "../modal/StudentModal.c"
-#include "../utils/controller/mainController.c"
+#include "../modal/studentModal.c"
+#include "../utils/controller/controllerUtil.c"
 
 #include <stdio.h>
 #include <string.h>
+#ifndef PROJECT_STUDENTCONTROLLER_C
+#define PROJECT_STUDENTCONTROLLER_C
 
 void initStudentOS() {
     render(StudentView);
-    initStudentModal();
 
     char input[10] = "";
     while (1) {
@@ -23,24 +24,27 @@ void initStudentOS() {
             //        "1. 添加学生信息",
             //        "2. 删除学生信息",
             //        "3. 查看学生信息",
-            //        "4. 返回到主页",
-            //        "5. 退出本系统"
+            //        "4. 查看全部学生信息",
+            //        "5. 返回到主页",
             //        "6. 重新进入（清屏）"
+            //        "7. 退出本系统"
 
             if (strcmp(input, "1") == 0) {
                 addStudentHandler();
             } else if (strcmp(input, "2") == 0) {
                 removeStudentHandler();
             } else if (strcmp(input, "3") == 0) {
-                checkStudentHandler();
+                seekStudentHandler();
             } else if (strcmp(input, "4") == 0) {
-                return;
+                seeAllStudentHandler();
             } else if (strcmp(input, "5") == 0) {
-                return exitSystem(0);
+                return;
             } else if (strcmp(input, "6") == 0) {
                 puts("Will refresh screen 2 seconds later");
                 sleep(2);
                 render(StudentView);
+            } else if (strcmp(input, "7") == 0) {
+                return exitSystem(0);
             }
         } else {
             puts("Invalid number! Please input valid number:");
@@ -60,6 +64,7 @@ void addStudentHandler() {
         puts("\nFailed to add student. err: repetitive id.\n");
     } else {
         puts("\nSuccessfully added student");
+        puts("Student:");
         printStudent(res->student);
         puts("");
     }
@@ -75,12 +80,13 @@ void removeStudentHandler() {
         puts("\nFailed to add student. err: id not found.\n");
     } else {
         puts("\nSuccessfully removed student");
+        puts("Student:");
         printStudent(res->student);
         puts("");
     }
 }
 
-void checkStudentHandler() {
+void seekStudentHandler() {
     int id;
     puts("Please input id of student to seek with the format: '{id}'");
     puts("ex. 00");
@@ -90,12 +96,31 @@ void checkStudentHandler() {
         puts("\nFailed to seek student. err: id not found.\n");
     } else {
         puts("\nSuccessfully seek student");
+        puts("Student:");
         printStudent(res->student);
         puts("");
     }
 }
 
 
-void printStudent(Student *student) {
-    printf("Student:\nid:%d\tname:%s\tclassNum:%d\n", student->id, student->name, student->classNum);
+void seeAllStudentHandler() {
+    Students* students = getAllStudent();
+    Student student;
+    int cnt = studentCount();
+    if (cnt == 0) {
+        puts("There is no student.\n");
+        return;
+    }
+    for (int i = 0; i < cnt; i ++) {
+        student = *students[i];
+        puts("Student:");
+        printStudent(&student);
+    }
 }
+
+
+
+void printStudent(Student *student) {
+    printf("id:%d\tname:%s\tclassNum:%d\n", student->id, student->name, student->classNum);
+}
+#endif //PROJECT_STUDENTCONTROLLER_C

@@ -30,11 +30,11 @@ ReturnedStudent *addStudent(int id, char name[nameLen], int classNum);
 ReturnedStudent *removeStudent(int id);
 ReturnedStudent *updateStudent(int id, char newName[nameLen], int newClassNum);
 ReturnedStudent *seekStudent(int id);
-void seeAllStudent();
+Students* getAllStudent();
 int studentCount();
 
 int findStudent(int id);
-int findLowerBound(int id);
+int findStudentLowerBound(int id);
 
 
 #endif //PROJECT_STUDENTMODAL_H

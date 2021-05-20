@@ -2,11 +2,14 @@
 // Created by firework on 2021/5/20.
 //
 
-#include "mainController.h"
+#include "controllerUtil.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#ifndef PROJECT_CONTROLLERUTIL_C
+#define PROJECT_CONTROLLERUTIL_C
+
 
 int checkoutInputNum(char *input, int maxNum) {
     for (int i = 1; i <= maxNum; i ++) {
@@ -32,3 +35,5 @@ void exitSystem(int exitSymbol) {
 
     exit(exitSymbol);
 }
+
+#endif //PROJECT_CONTROLLERUTIL_C

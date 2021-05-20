@@ -3,9 +3,8 @@
 //
 
 
-#include "StudentModal.h"
+#include "studentModal.h"
 #include <string.h>
-#include <stdio.h>
 
 int studentCount_ = 0;
 Student *students_[studentLen];
@@ -30,7 +29,7 @@ ReturnedStudent *addStudent(int id, char name[nameLen], int classNum){
 
 
 
-    int index = findLowerBound(id), cnt = studentCount();
+    int index = findStudentLowerBound(id), cnt = studentCount();
     while (cnt > index) {
         students_[cnt] = students_[cnt - 1];
         cnt --;
@@ -90,13 +89,8 @@ ReturnedStudent *seekStudent(int id) {
     return res;
 };
 
-void seeAllStudent() {
-    int cnt = studentCount();
-    printf("seeAllStudent\n");
-    for (int i = 0; i < cnt; i ++) {
-        printf("id:%d \t name:%s \t classNum:%d \n", students_[i]->id, students_[i]->name, students_[i]->classNum);
-    }
-    printf("all end\n");
+Students* getAllStudent() {
+    return students_;
 };
 
 
@@ -137,7 +131,7 @@ int findStudent(int id) {
     return -1;
 }
 
-int findLowerBound(int id) {
+int findStudentLowerBound(int id) {
     if (studentCount() <= 0) {
         return 0;
     }
