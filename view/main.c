@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 void render(int viewCategory) {
-//    clearScreen();
+    clearScreen();
     renderView(viewCategory);
 }
 
@@ -54,6 +54,8 @@ void renderCategory_(char labels[][LabelLen], int labelNum) {
     putchar('|');
     renderTransverseLine_();
     puts("|");
+    renderTop_();
+
 }
 
 char IndexViewLabels[][LabelLen] = {
@@ -72,17 +74,19 @@ char studentViewLabels[][LabelLen] = {
 //        "2. 删除学生信息",
 //        "3. 查看学生信息",
 //        "4. 返回到主页",
-//        "5. 退出本系统"
+//        "5. 退出本系统",
+//        "6. 刷新"
         "1. add student info",
         "2. remove student info",
         "3. check student info",
         "4. back to index",
-        "5. exit system"
+        "5. exit system",
+        "6. refresh screen"
 };
 
 
 void renderStudent() {
-    renderCategory_(studentViewLabels, 5);
+    renderCategory_(studentViewLabels, 6);
 }
 
 
@@ -92,10 +96,11 @@ char CourseViewLabels[][LabelLen] = {
         "3. update course",
         "4. check course info",
         "5. back to index",
-        "6. exit system"
+        "6. exit system",
+        "7. refresh screen"
 };
 void renderCourse(){
-    renderCategory_(CourseViewLabels, 6);
+    renderCategory_(CourseViewLabels, 7);
 }
 
 char ChooseViewLabels[][LabelLen] = {
@@ -104,8 +109,10 @@ char ChooseViewLabels[][LabelLen] = {
         "3. update score for student",
         "4. check chose info",
         "5. back to index",
-        "6. exit system"
+        "6. exit system",
+        "7. refresh screen"
+
 };
 void renderChoose(){
-    renderCategory_(ChooseViewLabels, 6);
+    renderCategory_(ChooseViewLabels, 7);
 }

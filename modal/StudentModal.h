@@ -24,7 +24,7 @@ ReturnedStudent * newReturnedStudent() {
 
 typedef Student* Students;
 
-Students *initStudent();
+Students *initStudentModal();
 
 ReturnedStudent *addStudent(int id, char name[nameLen], int classNum);
 ReturnedStudent *removeStudent(int id);

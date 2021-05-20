@@ -10,7 +10,7 @@
 int studentCount_ = 0;
 Student *students_[studentLen];
 
-Students *initStudent() {
+Students *initStudentModal() {
     for (int i = 0; i < studentLen; i ++)
         students_[i] = newStudent();
     return students_;
@@ -18,22 +18,28 @@ Students *initStudent() {
 
 //  暂时不考虑学生数量过多的情况，仅在一个 studentLen 大小的 数组中存储
 ReturnedStudent *addStudent(int id, char name[nameLen], int classNum){
+    if (findStudent(id) != -1) {
+        return newReturnedStudent();
+    }
     Student *student = newStudent();
     student->id = id;
     student->classNum = classNum;
     strcpy(student->name, name);
 
-    students_[studentCount()] = student;
-    studentCount_ ++;
-    //  这里不写 students_[studentCount_ ++] 是为了保险起见，减少风险
-    //  其实可以单独为针对 studentCount_ 的操作写几个函数来尽量确保 其原子性及安全性，但是懒
 
-    int index = findLowerBound(id), cnt = studentCount_;
+
+
+
+    int index = findLowerBound(id), cnt = studentCount();
     while (cnt > index) {
         students_[cnt] = students_[cnt - 1];
         cnt --;
     }
     students_[index] = student;
+    studentCount_ ++;
+    //  这里不写 students_[studentCount_ ++] 是为了保险起见，减少风险
+    //  其实可以单独为针对 studentCount_ 的操作写几个函数来尽量确保 其原子性及安全性，但是懒
+
 
     ReturnedStudent *res = newReturnedStudent();
     res->student = student;
@@ -133,7 +139,7 @@ int findStudent(int id) {
 
 int findLowerBound(int id) {
     if (studentCount() <= 0) {
-        return -1;
+        return 0;
     }
 
     int i = 0, cnt = studentCount_;

@@ -1,6 +1,5 @@
 
-#include "./modal/StudentModal.c"
-#include "./view/main.c"
+#include "./controller/studentController.c"
 
 #include <stdio.h>
 
@@ -22,7 +21,7 @@ int main() {
 //    updateStudent(1, "asfjkg", 1234);
 //    seeAllStudent();
 
-    render(IndexView);
+    initStudentOS();
 
     return 0;
 }
