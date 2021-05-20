@@ -1,12 +1,10 @@
 //
 // Created by firework on 2021/5/19.
 //
-
+#include "../utils/view/viewUtil.h"
 #ifndef PROJECT_MAIN_H
 #define PROJECT_MAIN_H
 
-const int TOP = 30;
-const int LEFT = 40;
 
 const int IndexView = 0;
 const int StudentView = 1;
@@ -21,4 +19,6 @@ void renderIndex();
 void renderStudent();
 void renderCourse();
 void renderChoose();
+
+void renderLabels(char labels[][LabelLen], int labelNum);
 #endif //PROJECT_MAIN_H
