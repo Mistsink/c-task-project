@@ -39,11 +39,13 @@ Course * newCourse() {
 
 typedef struct StudentCourse {
     int courseId;
+    int score;
     struct StudentCourse * next;
 } StudentCourse;
 StudentCourse * newStudentCourse() {
     StudentCourse * studentCourse = (StudentCourse *) malloc(sizeof(StudentCourse));
     studentCourse->courseId = -1;
+    studentCourse->score = -1;
     studentCourse->next = NULL;
     return studentCourse;
 }

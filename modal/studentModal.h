@@ -30,6 +30,8 @@ ReturnedStudent *addStudent(int id, char name[nameLen], int classNum);
 ReturnedStudent *removeStudent(int id);
 ReturnedStudent *updateStudent(int id, char newName[nameLen], int newClassNum);
 ReturnedStudent *seekStudent(int id);
+ReturnedStudent *addStudentCourse(int studentId, int courseId);
+ReturnedStudent *updateStudentScore(int studentId, int courseId, int score);
 Students* getAllStudent();
 int studentCount();
 

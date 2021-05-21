@@ -4,7 +4,12 @@
 
 
 #include "studentModal.h"
+#include "courseModal.c"
 #include <string.h>
+
+
+#ifndef PROJECT_STUDENTMODAL_C
+#define PROJECT_STUDENTMODAL_C
 
 int studentCount_ = 0;
 Student *students_[studentLen];
@@ -89,6 +94,45 @@ ReturnedStudent *seekStudent(int id) {
     return res;
 };
 
+ReturnedStudent *addStudentCourse(int studentId, int courseId) {
+    int index = findStudent(studentId);
+
+    Student *student = students_[index];
+    StudentCourse * studentCourse = student->course;
+    while (studentCourse->next != NULL)
+        studentCourse = studentCourse->next;
+    studentCourse->courseId = courseId;
+    studentCourse->next = newStudentCourse();
+    ReturnedStudent *returnedStudent = newReturnedStudent();
+    returnedStudent->student = student;
+    returnedStudent->ok = 1;
+    return returnedStudent;
+}
+
+ReturnedStudent *updateStudentScore(int studentId, int courseId, int score) {
+    int index = findStudent(studentId);
+
+    Student *student = students_[index];
+    StudentCourse * studentCourse = student->course;
+    while (studentCourse->courseId != courseId)
+        studentCourse = studentCourse->next;
+    if (studentCourse->next == NULL) {
+        return newReturnedStudent();
+    }
+    studentCourse->score = score;
+    ReturnedStudent *returnedStudent = newReturnedStudent();
+    returnedStudent->student = student;
+    returnedStudent->ok = 1;
+    return returnedStudent;
+};
+
+int hasStudentCourse(int studentIndex, int courseId) {
+    StudentCourse * studentCourse = students_[studentIndex]->course;
+    while (studentCourse->courseId != courseId && studentCourse->next != NULL)
+        studentCourse = studentCourse->next;
+    return studentCourse->courseId == courseId;
+}
+
 Students* getAllStudent() {
     return students_;
 };
@@ -143,3 +187,5 @@ int findStudentLowerBound(int id) {
     }
     return i;
 }
+
+#endif //PROJECT_STUDENTMODAL_C

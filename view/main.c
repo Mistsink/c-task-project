@@ -61,13 +61,19 @@ void renderCategory_(char labels[][LabelLen], int labelNum) {
 }
 
 char IndexViewLabels[][LabelLen] = {
+        //        "1. 学生相关",
+        //        "2. 课程相关",
+        //        "3. 选课相关",
+        //        "4. 重新进入（清屏）"
+        //        "5. 退出本系统"
         "1. Student os",
         "2. Course os",
         "3. Choose course os",
-        "4. exit system"
+        "4. Refresh screen",
+        "5. Exit system"
 };
 void renderIndex(){
-    renderCategory_(IndexViewLabels, 4);
+    renderCategory_(IndexViewLabels, 5);
 }
 
 
@@ -115,17 +121,20 @@ void renderCourse(){
 }
 
 char ChooseViewLabels[][LabelLen] = {
+//        1. 选课
+//        2. ~~退选~~
+//        3. 成绩录入
+//        4. 查看学生选课信息
         "1. add choose for student",
-        "2. remove choose for student",
-        "3. update score for student",
-        "4. check chose info",
-        "5. back to index",
-        "6. refresh screen",
-        "7. exit system"
+        "2. update score for student",
+        "3. seek chose for student",
+        "4. back to index",
+        "5. refresh screen",
+        "6. exit system"
 
 };
 void renderChoose(){
-    renderCategory_(ChooseViewLabels, 7);
+    renderCategory_(ChooseViewLabels, 6);
 }
 
 

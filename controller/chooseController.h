@@ -3,14 +3,15 @@
 //
 
 #include "../modal/studentModal.h"
+#include "../modal/chooseModal.h"
 
 #ifndef PROJECT_CHOOSECONTROLLER_H
 #define PROJECT_CHOOSECONTROLLER_H
 void initChooseOS();
 
 void addChooseHandler();
-void removeChooseHandler();
-void checkChooseHandler();
+void updateScoreHandler();
+void seekChooseHandler();
 
-void printChoose(Student *student);
+void printChoose(ReturnedChoose *returnedChoose);
 #endif //PROJECT_CHOOSECONTROLLER_H
