@@ -30,10 +30,6 @@ ReturnedStudent *addStudent(int id, char name[nameLen], int classNum){
     student->classNum = classNum;
     strcpy(student->name, name);
 
-
-
-
-
     int index = findStudentLowerBound(id), cnt = studentCount();
     while (cnt > index) {
         students_[cnt] = students_[cnt - 1];
