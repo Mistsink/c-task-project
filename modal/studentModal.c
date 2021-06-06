@@ -21,7 +21,7 @@ Students *initStudentModal() {
 };
 
 //  暂时不考虑学生数量过多的情况，仅在一个 studentLen 大小的 数组中存储
-ReturnedStudent *addStudent(int id, char name[nameLen], int classNum){
+ReturnedStudent *addStudent(int id, char name[nameLen], int classNum) {
     if (findStudent(id) != -1) {
         return newReturnedStudent();
     }
@@ -66,7 +66,7 @@ ReturnedStudent *removeStudent(int id) {
     return res;
 };
 
-ReturnedStudent *updateStudent(int id, char newName[nameLen], int newClassNum){
+ReturnedStudent *updateStudent(int id, char newName[nameLen], int newClassNum) {
     int index = findStudent(id);
     ReturnedStudent *res = seekStudent(id);
     if (index == -1) {

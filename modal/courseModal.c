@@ -19,7 +19,7 @@ Courses *initCourseModal() {
 };
 
 //  暂时不考虑学生数量过多的情况，仅在一个 courseLen 大小的 数组中存储
-ReturnedCourse *addCourse(int id, char name[nameLen], int teacherId){
+ReturnedCourse *addCourse(int id, char name[nameLen], int teacherId) {
     if (findCourse(id) != -1) {
         return newReturnedCourse();
     }

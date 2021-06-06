@@ -72,10 +72,9 @@ char IndexViewLabels[][LabelLen] = {
         "4. Refresh screen",
         "5. Exit system"
 };
-void renderIndex(){
+void renderIndex() {
     renderCategory_(IndexViewLabels, 5);
 }
-
 
 char studentViewLabels[][LabelLen] = {
 //        "1. 添加学生信息",
@@ -93,12 +92,9 @@ char studentViewLabels[][LabelLen] = {
         "6. refresh screen",
         "7. exit system"
 };
-
-
 void renderStudent() {
     renderCategory_(studentViewLabels, 7);
 }
-
 
 char CourseViewLabels[][LabelLen] = {
         //      1. 添加课程
@@ -116,7 +112,7 @@ char CourseViewLabels[][LabelLen] = {
         "6. refresh screen",
         "7. exit system"
 };
-void renderCourse(){
+void renderCourse() {
     renderCategory_(CourseViewLabels, 7);
 }
 
@@ -133,7 +129,7 @@ char ChooseViewLabels[][LabelLen] = {
         "6. exit system"
 
 };
-void renderChoose(){
+void renderChoose() {
     renderCategory_(ChooseViewLabels, 6);
 }
 
